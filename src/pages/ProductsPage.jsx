@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 import { StoreHeader, StoreFooter } from '../StoreChrome.jsx'
-import { getProducts } from '../api/product.js'
+import { getProducts } from '../api/products.js'
 import { useCart } from '../cart/cartContext.js'
 import bannerImage from '../assets/korean2.jpg'
 
