@@ -5,7 +5,7 @@ import heroImage from './assets/bg1.jpg'
 import storyImage from './assets/korean1.webp'
 import bannerImage from './assets/korean2.jpg'
 import promoImage from './assets/korean3.webp'
-import { getProducts } from './api/product.js'
+import { getProducts } from './api/products.js'
 import { useCart } from './cart/cartContext.js'
 import { StoreHeader, StoreFooter } from './StoreChrome.jsx'
 
