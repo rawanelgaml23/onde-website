@@ -12,7 +12,21 @@ const app = express()
 
 await DBconnect()
 
-app.use(cors({ origin: configService.clientUrl }))
+const allowedOrigins = [
+    configService.clientUrl,
+    "https://onde-website-ashen.vercel.app",
+    /^https:\/\/onde-website-[a-z0-9-]+-rawan-6db4\.vercel\.app$/,
+]
+
+app.use(cors({
+    origin: (origin, callback) => {
+        if (!origin) return callback(null, true)
+        const ok = allowedOrigins.some((o) =>
+            o instanceof RegExp ? o.test(origin) : o === origin
+        )
+        callback(null, ok)
+    },
+}))
 app.use(express.json({ limit: "50kb" }))
 
 app.get("/", (req, res) => res.send("Hello World"))
@@ -30,4 +44,4 @@ app.use((req, res) => {
 
 app.use(errorHandler)
 
-app.listen(PORT, () => console.log(`Example app listening on port ${PORT}!`))
+app.listen(PORT, () => console.log(`Server running on port ${PORT}`))
