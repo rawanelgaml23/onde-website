@@ -3,6 +3,8 @@ import { Link } from 'react-router-dom'
 import { StoreHeader, StoreFooter } from '../StoreChrome.jsx'
 import { useCart, parsePrice, getShipping } from '../cart/cartContext.js'
 
+const API_URL = import.meta.env.VITE_API_URL || ''
+
 const EMPTY_FORM = {
   name: '',
   phone: '',
@@ -55,7 +57,7 @@ export default function CheckoutPage() {
 
     setSubmitting(true)
     try {
-      const res = await fetch('/api/orders', {
+      const res = await fetch(`${API_URL}/api/orders`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
