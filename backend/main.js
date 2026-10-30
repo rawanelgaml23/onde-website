@@ -30,10 +30,4 @@ app.use((req, res) => {
 
 app.use(errorHandler)
 
-if (process.env.VERCEL !== "1") {
-    app.listen(PORT, () => {
-        console.log(`Server running on port ${PORT}`)
-    })
-}
-
-export default app
+app.listen(PORT, () => console.log(`Server running on port ${PORT}`))
