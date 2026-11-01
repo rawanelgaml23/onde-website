@@ -9,4 +9,6 @@ export default {
     port: process.env.PORT,
     DB_URI: process.env.DB_URI,
     clientUrl: process.env.CLIENT_URL,
+    resendKey: process.env.RESEND_API_KEY,
+    adminEmail: process.env.ADMIN_EMAIL,
 }

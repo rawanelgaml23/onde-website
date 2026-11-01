@@ -4,6 +4,8 @@ import { Product } from "../product/product.model.js"
 import { Order } from "./order.model.js"
 import { response } from "../../common/middleware/response.js"
 import { createHttpError } from "../../common/utils/httpError.js"
+import { sendOrderEmail } from "../../common/utils/sendOrderEmail.js"
+
 
 export const orderRouter = Router()
 
@@ -97,7 +99,7 @@ orderRouter.post("/", async (req, res) => {
         total: subtotal + shipping,
         payment: body.payment,
     })
-
+    sendOrderEmail(order).catch((err) => console.error("Email failed:", err.message))
     response({
         res,
         status: 201,
