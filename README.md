@@ -2,4 +2,4 @@
 
 ## [**View Live Demo**](https://onde-website-ashen.vercel.app/)
 
-![Uploading portfolio.png…]()
+![Uploading portfolio.png…](./skin-care.png)
