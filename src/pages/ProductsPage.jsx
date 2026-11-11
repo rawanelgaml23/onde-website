@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 import { StoreHeader, StoreFooter } from '../StoreChrome.jsx'
-import { getProducts } from '../api/products.js'
+import { products } from '../products.js'
 import { useCart } from '../cart/cartContext.js'
 import bannerImage from '../assets/korean2.jpg'
 
@@ -17,17 +17,8 @@ function ArrowIcon() {
 
 export default function ProductsPage() {
   const { count, addToCart } = useCart()
-  const [products, setProducts] = useState([])
-  const [loading, setLoading] = useState(true)
   const [activeCategory, setActiveCategory] = useState('All')
   const [currentPage, setCurrentPage] = useState(1)
-
-  useEffect(() => {
-    getProducts()
-      .then(setProducts)
-      .catch(() => setProducts([]))
-      .finally(() => setLoading(false))
-  }, [])
 
   const filteredProducts = activeCategory === 'All'
     ? products
@@ -57,7 +48,7 @@ export default function ProductsPage() {
     )
     elements.forEach((element) => observer.observe(element))
     return () => observer.disconnect()
-  }, [activeCategory, currentPage, loading])
+  }, [activeCategory, currentPage])
 
   return (
     <>
@@ -81,8 +72,6 @@ export default function ProductsPage() {
             </button>
           ))}
         </nav>
-
-        {loading && <p className="category-empty">Loading…</p>}
 
         <div className="product-grid" key={`${activeCategory}-${currentPage}`}>
           {visibleProducts.map((product, index) => (

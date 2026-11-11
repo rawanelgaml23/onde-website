@@ -1,11 +1,11 @@
 import { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import './App.css'
-import heroImage from '../public/products/bg1.jpg'
-import storyImage from '../public/products/korean1.webp'
-import bannerImage from '../public/products/korean2.jpg'
-import promoImage from '../public/products/korean3.webp'
-import { getProducts } from './api/products.js'
+const heroImage = '/products/bg1.jpg'
+const storyImage = '/products/korean1.webp'
+const bannerImage = '/products/korean2.jpg'
+const promoImage = '/products/korean3.webp'
+import { products } from './products.js'
 import { useCart } from './cart/cartContext.js'
 import { StoreHeader, StoreFooter } from './StoreChrome.jsx'
 
@@ -22,20 +22,8 @@ function ArrowIcon() {
 
 function App() {
   const { count: bagCount, addToCart } = useCart()
-  const [products, setProducts] = useState([])
-  const [loading, setLoading] = useState(true)
   const [activeCategory, setActiveCategory] = useState(CATEGORIES[0])
   const [addedId, setAddedId] = useState(null)
-
-  useEffect(() => {
-    getProducts()
-      .then(setProducts)
-      .catch((err) => {
-        console.error('Products error:', err)
-        setProducts([])
-      })
-      .finally(() => setLoading(false))
-  }, [])
 
   useEffect(() => {
     const elements = document.querySelectorAll('.reveal')
@@ -193,9 +181,7 @@ function App() {
           </nav>
 
           <div className="shop-section">
-            {loading ? (
-              <p className="category-empty">Loading…</p>
-            ) : shown.length === 0 ? (
+            {shown.length === 0 ? (
               <p className="category-empty">Coming soon ✳</p>
             ) : (
               <div className="product-grid">

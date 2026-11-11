@@ -7,11 +7,13 @@ import ProductsPage from './pages/ProductsPage.jsx'
 import CartPage from './pages/CartPage.jsx'
 import CheckoutPage from './pages/CheckoutPage.jsx'
 import { CartProvider } from './cart/CartProvider.jsx'
+import ScrollToTop from './ScrollToTop.jsx'
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
     <BrowserRouter>
       <CartProvider>
+        <ScrollToTop />
         <Routes>
           <Route path="/" element={<App />} />
           <Route path="/products" element={<ProductsPage />} />

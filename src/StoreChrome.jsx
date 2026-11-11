@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { Link } from 'react-router-dom'
-import logoImage from '../public/products/onde-logo.png'
+const logoImage = '/products/onde-logo.png'
 
 export function StoreHeader({ bagCount }) {
   const [menuOpen, setMenuOpen] = useState(false)

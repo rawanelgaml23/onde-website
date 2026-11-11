@@ -1,13 +1,13 @@
-import cleanserImage from '../public/products/clean1-.jpg'
-import essenceImage from '../public/products/toner1.jpg'
-import serumImage from '../public/products/serum1.webp'
-import creamImage from '../public/products/moist1-.jpg'
-import sunscreenImage from '../public/products/sun1.jpg'
-import dynastyCreamImage from '../public/products/moist3.webp'
-import glowDropsImage from '../public/products/serum2-.jpg'
-import ginsengImage from '../public/products/toner2.jpg'
+const cleanserImage = '/products/clean1-.jpg'
+const essenceImage = '/products/toner1.jpg'
+const serumImage = '/products/serum1.webp'
+const creamImage = '/products/moist1-.jpg'
+const sunscreenImage = '/products/sun1.jpg'
+const dynastyCreamImage = '/products/moist3.webp'
+const glowDropsImage = '/products/serum2-.jpg'
+const ginsengImage = '/products/toner2.jpg'
 
-export const products = [
+const productData = [
   {
     name: 'Ginseng Essence Water',
     featured: true,
@@ -512,3 +512,10 @@ export const products = [
     tone: 'sage',
   },
 ]
+
+export const products = productData.map((product, index) => ({
+  ...product,
+  id: `product-${index + 1}`,
+  price: Number(String(product.price).replace(/[^0-9.]/g, '')),
+  image: product.image.replace('../public', ''),
+}))
