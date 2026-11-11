@@ -1,14 +1,14 @@
 import { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import './App.css'
-const heroImage = '/products/bg1.jpg'
-const storyImage = '/products/korean1.webp'
-const bannerImage = '/products/korean2.jpg'
-const promoImage = '/products/korean3.webp'
 import { products } from './products.js'
 import { useCart } from './cart/cartContext.js'
 import { StoreHeader, StoreFooter } from './StoreChrome.jsx'
 
+const heroImage = '/products/bg1.jpg'
+const storyImage = '/products/korean1.webp'
+const bannerImage = '/products/korean2.jpg'
+const promoImage = '/products/korean3.webp'
 const CATEGORIES = ['Sun Screen', 'Toners', 'Moisturizers', 'Cleansers', 'Serums', 'Eye Cream']
 const PREVIEW_COUNT = 4
 
